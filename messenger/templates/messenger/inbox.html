@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Minhas Mensagens</h2>
+<a href="{% url 'messenger:enviar_mensagem' %}" style="background: #28a745; color: white; padding: 5px 10px; text-decoration: none; border-radius: 3px;">Nova Mensagem</a>
+<hr>
+
+{% if mensagens %}
+    {% for msg in mensagens %}
+        <div style="border: 1px solid #ddd; padding: 10px; margin-bottom: 10px; border-radius: 5px;">
+            <strong>De:</strong> {{ msg.remetente.username }} <br>
+            <strong>Data:</strong> {{ msg.data_envio|date:"d/m/Y H:i" }} <br>
+            <p>{{ msg.conteudo }}</p>
+        </div>
+    {% endfor %}
+{% else %}
+    <p>Sua caixa de entrada está vazia.</p>
+{% endif %}
+{% endblock %}

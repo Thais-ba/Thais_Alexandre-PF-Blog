@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Meu Perfil</h2>
+<div style="display: flex; gap: 20px; align-items: center;">
+    {% if perfil.avatar %}
+        <img src="{{ perfil.avatar.url }}" width="150" style="border-radius: 50%;">
+    {% else %}
+        <div style="width: 150px; height: 150px; background: #ccc; border-radius: 50%; display: flex; align-items: center; justify-content: center;">Sem Foto</div>
+    {% endif %}
+    
+    <div>
+        <p><strong>Usuário:</strong> {{ user.username }}</p>
+        <p><strong>Nome:</strong> {{ user.first_name }} {{ user.last_name }}</p>
+        <p><strong>Email:</strong> {{ user.email }}</p>
+        <p><strong>Biografia:</strong> {{ perfil.biografia }}</p>
+    </div>
+</div>
+<br>
+<a href="{% url 'edit_profile' %}" style="padding: 10px; background: #007bff; color: white; text-decoration: none; border-radius: 5px;">Editar Dados</a>
+{% endblock %}

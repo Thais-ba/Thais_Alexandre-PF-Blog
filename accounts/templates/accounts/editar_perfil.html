@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div style="max-width: 600px; margin: auto; padding: 20px;">
+    <h2>Editar Meu Perfil</h2>
+    <p>Atualize suas informações pessoais e sua foto de perfil abaixo.</p>
+
+    <form method="POST" enctype="multipart/form-data" style="background: #f9f9f9; padding: 20px; border-radius: 10px; border: 1px solid #ddd;">
+        {% csrf_token %}
+        
+        <h3 style="border-bottom: 1px solid #ccc;">Dados Pessoais</h3>
+        {{ user_form.as_p }}
+
+        <h3 style="border-bottom: 1px solid #ccc; margin-top: 20px;">Informações Adicionais</h3>
+        {{ perfil_form.as_p }}
+
+        <div style="margin-top: 20px;">
+            <button type="submit" style="background-color: #007bff; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">
+                Salvar Alterações
+            </button>
+            <a href="{% url 'profile' %}" style="margin-left: 10px; color: #666; text-decoration: none;">Cancelar</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

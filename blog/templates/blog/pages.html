@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Páginas do Blog</h2>
+<a href="{% url 'post_create' %}" style="background: #007bff; color: white; padding: 5px 10px; text-decoration: none; border-radius: 3px;">Criar Nova Página</a>
+<hr>
+
+<div class="post-list">
+    {% for post in posts %}
+        <div style="border: 1px solid #ddd; padding: 15px; margin-bottom: 20px; border-radius: 8px;">
+            <h3>{{ post.titulo }}</h3>
+            <h4>{{ post.subtitulo }}</h4>
+            <p><small>Por: {{ post.autor.username }} em {{ post.data }}</small></p>
+            {% if post.imagem %}
+                <img src="{{ post.imagem.url }}" width="200" style="display: block; margin-bottom: 10px;">
+            {% endif %}
+            <a href="{% url 'post_detail' post.pk %}">Ler mais...</a>
+        </div>
+    {% empty %}
+        <p><strong>Ainda não há páginas.</strong></p>
+    {% endfor %}
+</div>
+{% endblock %}

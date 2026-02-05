@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div style="text-align: center; margin-top: 50px;">
+    <h2>Você saiu com sucesso!</h2>
+    <p>Obrigado por visitar nosso blog de seguros.</p>
+    <a href="{% url 'login' %}">Clique aqui para entrar novamente</a> ou 
+    <a href="{% url 'pages' %}">volte para a página inicial</a>.
+</div>
+{% endblock %}

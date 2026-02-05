@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div style="max-width: 400px; margin: auto; padding: 20px; border: 1px solid #ddd; border-radius: 8px;">
+    <h2>Criar Nova Conta</h2>
+    <p>Preencha os dados abaixo para se cadastrar no blog.</p>
+    
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        
+        <button type="submit" style="background-color: #28a745; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer;">
+            Inscrever-se
+        </button>
+    </form>
+    
+    <hr>
+    <p>Já tem uma conta? <a href="{% url 'login' %}">Faça login aqui</a></p>
+</div>
+{% endblock %}
